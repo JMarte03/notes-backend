@@ -5,13 +5,14 @@
   "scripts": {
     "start": "node index.js",
     "dev": "node --watch index.js",
+    "build:ui": "rm -rf dist && cd ../forms && npm run build && cp -r dist ../intro_back",
+    "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Jesimiel Marte",
   "license": "MIT",
   "description": "",
   "dependencies": {
-    "cors": "^2.8.5",
     "express": "^5.1.0"
   }
 }
