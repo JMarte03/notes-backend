@@ -1,5 +1,10 @@
+require('dotenv').config()
 const express = require('express')
+const Note = require('./models/note')
 const app = express()
+
+// MONGOOSE STARTs
+// MONGOOSE ENDS
 
 app.use(express.json())
 app.use(express.static('dist'))
@@ -27,7 +32,9 @@ app.get('/', (request, response) => {
 })
 
 app.get('/api/notes', (request, response) => {
-    response.json(notes)
+    Note.find({}).then(notes => {
+      response.json(notes)
+    })
 })
 
 app.get('/api/notes/:id', (request, response) => {
